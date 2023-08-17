@@ -17,11 +17,17 @@ input {
     padding: 0 10px;
 }
 
+/*!------------- HEADER ---------------*/
+.header{
+    background-color: darkolivegreen;
+    color: aliceblue;
+    z-index: 3;
+}
+
 .titulo {
     font-family: monospace;
     text-align: center;
     color: darkolivegreen;
-    margin: 5% 0;
 }
 
 /*!------------- FOOTER ---------------*/
