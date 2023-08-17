@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for instance in queryset %}
+        <p>{{ instance.nombre_producto }}: {{ instance.cantidad }} {{ instance.etiqueta }}</p>
+    {% endfor %}
+{% endblock %}

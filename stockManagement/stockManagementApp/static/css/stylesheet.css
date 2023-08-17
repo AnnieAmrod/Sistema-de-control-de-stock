@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: aliceblue;
+}
+
+body {
+    background-color: black !important;
+}
+
+p, label {
+    color: aliceblue;
+}
+
+input {
+    background-color: gray;
+    padding: 0 10px;
+}
+
+.titulo {
+    font-family: monospace;
+    text-align: center;
+    color: darkolivegreen;
+    margin: 5% 0;
+}
+
+/*!------------- FOOTER ---------------*/
+#footer{
+    background-color: darkolivegreen;
+    margin-top: 5%;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 3;
+}
+
+.text-reset {
+    text-decoration: none;
+}
