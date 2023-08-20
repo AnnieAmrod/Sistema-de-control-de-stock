@@ -12,9 +12,12 @@ p, label {
     color: aliceblue;
 }
 
-input {
-    background-color: gray;
-    padding: 0 10px;
+input, input::placeholder, input:focus, input::selection, input:active{
+    background-color: gray !important;
+    /*border-color: darkolivegreen !important;*/
+    color: aliceblue !important;
+    outline: 0 !important;
+    /*padding: 0 10px;*/
 }
 
 /*!------------- HEADER ---------------*/
@@ -28,6 +31,35 @@ input {
     font-family: monospace;
     text-align: center;
     color: darkolivegreen;
+    text-shadow: 2px 2px 4px rgb(63, 80, 35);
+    font-weight: bolder;
+}
+
+.button {
+    background-color: darkolivegreen !important;
+    color: aliceblue;
+    text-decoration: none;
+    padding: 1% 2%;
+    border-radius: 25px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    text-align: center;
+}
+
+.table {
+    /*font-size: 13px;*/
+    text-align: center;
+    width: 95% !important;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+    margin: auto;
+    box-shadow: 0px 0px 20px 1px rgb(63, 80, 35);
+}
+
+.table th {
+    background-color: darkolivegreen !important;
+    color: aliceblue !important;
 }
 
 /*!------------- FOOTER ---------------*/
