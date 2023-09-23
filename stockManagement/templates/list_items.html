@@ -23,7 +23,7 @@
                 </thead>
                 {% for instance in queryset %}
                     <tr>
-                        <td>{{ instance.nombre_producto }}</td>
+                        <td><a class="text-reset" href="{% url 'update_items' instance.id %}">{{ instance.nombre_producto }}</a></td>
                         <td>{{ instance.categoria }}</td>
                         <td>{{ instance.cantidad }} {{ instance.etiqueta }}</td>
                     </tr>

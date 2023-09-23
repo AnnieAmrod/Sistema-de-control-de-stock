@@ -40,6 +40,7 @@ class StockCreateForm(forms.ModelForm):
         if not categoria:
             raise forms.ValidationError('Este campo es obligatorio')
         
+        #TODO Descomentar cuando esté acabado y sea un dropdown
         #for instance in Stock.objects.all():
         #    if categoria == instance.categoria:
         #        raise forms.ValidationError('Esta categoria ya existe')
