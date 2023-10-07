@@ -71,3 +71,18 @@ def update_items_view(request, pk):
         'form' : form,
     }
     return render(request, template_name, context)
+
+def delete_items_view(request, pk):
+    queryset = Stock.objects.get(id=pk)
+    template_name = 'delete_items.html'
+    title = 'Borrar Item - '+queryset.nombre_producto
+    if request.method == 'POST':
+        queryset.delete()
+        return redirect('/list_items')
+
+    context = {
+        'title': title,
+        'nombre_producto': queryset.nombre_producto
+    }
+    return render(request, template_name, context)
+    

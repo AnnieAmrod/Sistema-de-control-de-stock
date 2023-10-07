@@ -1,11 +1,20 @@
 from django.db import models
 
+etiqueta_choice = (
+    ('Unidad', 'Unidad(es)'),
+    ('Bote', 'Bote(s)'),
+    ('Bandeja', 'Bandeja(s)'),
+    ('Brick', 'Brick(s)'),
+    ('Tableta', 'Tableta(s)'),
+    ('Botella', 'Botella(s)')
+)
+
 # Create your models here.
 class Stock(models.Model):
     categoria = models.CharField(max_length=50, blank=True, null=True)
     nombre_producto = models.CharField(max_length=50, blank=True, null=True)
     cantidad = models.IntegerField(default=0, blank=True, null=True)
-    etiqueta = models.CharField(max_length=50, blank=True, null=True)
+    etiqueta = models.CharField(max_length=50, blank=True, null=True, choices=etiqueta_choice)
     cantidad_comprada = models.IntegerField(default=0, blank=True, null=True)
     #cantidad_recibida = models.IntegerField(default=0, blank=True, null=True)
     proveedor = models.CharField(max_length=50, blank=True, null=True)
