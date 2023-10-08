@@ -27,6 +27,15 @@ input, input::placeholder, input:focus, input::selection, input:active{
     z-index: 3;
 }
 
+.dropdown-item{
+    color: aliceblue !important;
+}
+
+.dropdown-item:hover{
+    color: darkolivegreen !important;
+}
+
+/*!-------------- BODY ---------------*/
 .titulo {
     font-family: monospace;
     text-align: center;
@@ -47,6 +56,13 @@ input, input::placeholder, input:focus, input::selection, input:active{
     text-align: center;
 }
 
+.select {
+    background-color: grey !important;
+    /*border: 1px solid darkolivegreen !important;*/
+    color: aliceblue !important;
+}
+
+/*!------------- LISTADO -------------*/
 .table {
     /*font-size: 13px;*/
     text-align: center;

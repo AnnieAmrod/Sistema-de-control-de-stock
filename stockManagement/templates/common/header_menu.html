@@ -12,8 +12,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'list_items' %}">Listado</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'add_items' %}">Agregar</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Añadir</a>
+                    <ul class="dropdown-menu bg-dark">
+                        <li><a class="dropdown-item" href="{% url 'add_items' %}">Producto</a></li>
+                        <li><a class="dropdown-item" href="{% url 'add_categories' %}">Categoría</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
                 </li>
             </ul>
             <form class="d-flex" role="search">

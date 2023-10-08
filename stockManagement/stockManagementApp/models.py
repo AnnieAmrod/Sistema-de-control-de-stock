@@ -6,8 +6,14 @@ etiqueta_choice = (
     ('Bandeja', 'Bandeja/s'),
     ('Brick', 'Brick/s'),
     ('Tableta', 'Tableta/s'),
-    ('Botella', 'Botella/s')
-)
+    ('Botella', 'Botella/s'),
+    ('Lata', 'Lata/s'),
+    ('Tarro', 'Tarro/s'),
+    ('Taza', 'Taza/s'),
+    ('Tubo', 'Tubo/s'),
+    ('Bolsa', 'Bolsa/s'),
+    )
+
 
 # Create your models here.
 class Categoria(models.Model):
