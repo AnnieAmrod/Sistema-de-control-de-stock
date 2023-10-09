@@ -62,6 +62,16 @@ input, input::placeholder, input:focus, input::selection, input:active{
     color: aliceblue !important;
 }
 
+/*!------------- MENSAJES ------------*/
+.success {
+    text-align: center;
+    list-style: none;
+    background-color: darkolivegreen;
+    color: aliceblue;
+    box-shadow: 0px 0px 20px 1px rgb(63, 80, 35);
+}
+
+
 /*!------------- LISTADO -------------*/
 .table {
     /*font-size: 13px;*/

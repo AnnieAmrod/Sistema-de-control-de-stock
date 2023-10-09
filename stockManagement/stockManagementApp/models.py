@@ -24,7 +24,7 @@ class Categoria(models.Model):
 
 class Stock(models.Model):
     #categoria = models.CharField(max_length=50, blank=True, null=True)
-    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, blank=True)
     nombre_producto = models.CharField(max_length=50, blank=True, null=True)
     cantidad = models.IntegerField(default=0, blank=True, null=True)
     etiqueta = models.CharField(max_length=50, blank=True, null=True, choices=etiqueta_choice)
@@ -41,7 +41,8 @@ class Stock(models.Model):
     creado_por = models.CharField(max_length=50, blank=True, null=True)
     punto_de_pedido = models.IntegerField(default=0, blank=True, null=True)
     ultima_actualizacion = models.DateTimeField(auto_now_add=False, auto_now=True)
-    exportar_csv = models.BooleanField(default=False)
+    #exportar_csv = models.BooleanField(default=False)
+    fecha_caducidad = models.DateField(auto_now_add=False, auto_now=False, blank=True, null=True)
     
     def __str__(self):
         return self.nombre_producto + ' - ' + str(self.cantidad) + ' ' + self.etiqueta

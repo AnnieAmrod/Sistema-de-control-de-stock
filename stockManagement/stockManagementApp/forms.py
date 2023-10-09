@@ -6,7 +6,7 @@ from crispy_forms.layout import Layout, Div, HTML, Field, Row
 class StockCreateForm(forms.ModelForm):
     class Meta:
         model = Stock
-        fields = ['categoria', 'nombre_producto', 'cantidad', 'etiqueta']
+        fields = ['categoria', 'nombre_producto', 'cantidad', 'etiqueta', 'fecha_caducidad']
         
     def __init__(self, *args, **kwargs):
         super(StockCreateForm, self).__init__(*args, **kwargs)
@@ -48,6 +48,7 @@ class StockCreateForm(forms.ModelForm):
 
 
 class StockSearchForm(forms.ModelForm):
+    exportar_csv = forms.BooleanField(required=False)
     class Meta:
         model = Stock
         fields = ['categoria', 'nombre_producto']
@@ -63,13 +64,16 @@ class StockSearchForm(forms.ModelForm):
             Div(
                 Field('categoria')
             ),
+            Div(
+                Field('exportar_csv')
+            ),
         )
 
 
 class StockUpdateForm(forms.ModelForm):
     class Meta:
         model = Stock
-        fields = ['categoria', 'nombre_producto', 'cantidad', 'etiqueta']
+        fields = ['categoria', 'nombre_producto', 'cantidad', 'etiqueta', 'fecha_caducidad']
         
     def __init__(self, *args, **kwargs):
         super(StockUpdateForm, self).__init__(*args, **kwargs)
