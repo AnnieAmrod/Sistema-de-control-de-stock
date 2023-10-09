@@ -87,6 +87,18 @@ def delete_items_view(request, pk):
     return render(request, template_name, context)
 
 
+def list_categories_view(request):
+    template_name = 'list_categories.html'
+    title = 'Listado de Categorias'
+    queryset = Categoria.objects.all()
+
+    context = {
+        'title': title,
+        'queryset' : queryset,
+    }
+    return render(request, template_name, context)
+
+
 def add_categories_view(request):
     template_name = 'add_items.html'
     title = 'Agregar Categoría'

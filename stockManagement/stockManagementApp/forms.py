@@ -89,16 +89,6 @@ class StockUpdateForm(forms.ModelForm):
         )
 
 
-
-
-
-
-
-
-
-
-
-
 class CategoryCreateForm(forms.ModelForm):
     class Meta:
         model = Categoria
