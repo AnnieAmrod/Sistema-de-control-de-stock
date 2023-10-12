@@ -38,7 +38,7 @@ class Stock(models.Model):
     #vendedor = models.CharField(max_length=50, blank=True, null=True)
     gastado_por = models.CharField(max_length=50, blank=True, null=True)
     comprador = models.CharField(max_length=50, blank=True, null=True)
-    creado_por = models.CharField(max_length=50, blank=True, null=True)
+    creado_por = models.CharField(max_length=50, blank=True, null=True)#Todo cambiar para que tenga más sentido, igual siendo la receta en que se ha gastado o algo así
     punto_de_pedido = models.IntegerField(default=0, blank=True, null=True)
     ultima_actualizacion = models.DateTimeField(auto_now_add=False, auto_now=True)
     #exportar_csv = models.BooleanField(default=False)

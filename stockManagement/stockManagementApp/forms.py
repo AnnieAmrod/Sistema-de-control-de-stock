@@ -7,7 +7,16 @@ class StockCreateForm(forms.ModelForm):
     class Meta:
         model = Stock
         fields = ['categoria', 'nombre_producto', 'cantidad', 'etiqueta', 'fecha_caducidad']
-        
+
+        widgets = {
+            'fecha_caducidad': forms.DateInput(
+                format=('%Y-%m-%d'),
+                attrs={'class': 'form-control datepicker', 
+                        'placeholder': 'Selecciona la fecha',
+                        'type': 'date'
+                    }),
+        }
+
     def __init__(self, *args, **kwargs):
         super(StockCreateForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
@@ -20,7 +29,8 @@ class StockCreateForm(forms.ModelForm):
             ),
             Row( #De esta forma no tendremos que usar la clase row
                 Div(Field('cantidad'), css_class="col-3"),
-                Div(Field('etiqueta'), css_class="col-9"),
+                Div(Field('etiqueta'), css_class="col-5"),
+                Div(Field('fecha_caducidad'), css_class="col-4"),
                 css_class="row"
             )
         )
@@ -87,7 +97,8 @@ class StockUpdateForm(forms.ModelForm):
             ),
             Row( #De esta forma no tendremos que usar la clase row
                 Div(Field('cantidad'), css_class="col-3"),
-                Div(Field('etiqueta'), css_class="col-9"),
+                Div(Field('etiqueta'), css_class="col-5"),
+                Div(Field('fecha_caducidad'), css_class="col-4"),
                 css_class="row"
             )
         )
@@ -133,6 +144,45 @@ class CategoriaUpdateForm(forms.ModelForm):
         self.helper.layout = Layout(
             Div(
                 Div(Field('nombre'), css_class="col-6"),
+                css_class="row"
+            )
+        )
+
+class GastadorForm (forms.ModelForm):
+    class Meta:
+        model = Stock
+        fields = ['cantidad_gastada', 'gastado_por']
+        
+    def __init__(self, *args, **kwargs):
+        super(GastadorForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_tag = False # No incluir <form></form>
+        self.helper.layout = Layout(
+            Div(
+                Div(Field('cantidad_gastada'), css_class="col-6"),
+                Div(Field('gastado_por'), css_class="col-6"),
+                css_class="row"
+            )
+        )
+
+class CompradorForm (forms.ModelForm):
+    class Meta:
+        model = Stock
+        fields = ['cantidad_comprada', 'comprador', 'proveedor', 'precio']
+        
+    def __init__(self, *args, **kwargs):
+        super(CompradorForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_tag = False # No incluir <form></form>
+        self.helper.layout = Layout(
+            Div(
+                Div(Field('cantidad_comprada'), css_class="col-3"),
+                Div(Field('comprador'), css_class="col-9"),
+                css_class="row"
+            ),
+            Div(
+                Div(Field('proveedor'), css_class="col-9"),
+                Div(Field('precio'), css_class="col-3"),
                 css_class="row"
             )
         )

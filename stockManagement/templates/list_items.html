@@ -26,8 +26,7 @@
                     <tr>
                         <td><a class="text-reset" href="{% url 'update_items' instance.id %}">{{ instance.nombre_producto }}</a></td>
                         <td><a class="text-reset" href="{% url 'update_categories' instance.id %}">{{ instance.categoria }}</a></td>
-                        <td>{{ instance.cantidad }} {{ instance.get_etiqueta_display }}
-                        </td>
+                        <td><a class="text-reset" href="{% url 'item_detail' instance.id %}">{{ instance.cantidad }} {{ instance.get_etiqueta_display }}</a></td>
                         <td><a href="{% url 'delete_items' instance.id %}"><i class="fa-solid fa-trash" style="color: #990000;"></i></a></td>
                     </tr>
                 {% endfor %}

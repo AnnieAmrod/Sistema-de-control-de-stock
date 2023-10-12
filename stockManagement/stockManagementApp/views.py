@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 import csv
 from .models import Stock, Categoria
-from .forms import StockCreateForm, StockSearchForm, StockUpdateForm, CategoryCreateForm, CategoriaUpdateForm
+from .forms import StockCreateForm, StockSearchForm, StockUpdateForm, CategoryCreateForm, CategoriaUpdateForm, GastadorForm, CompradorForm
 from django.views.generic import TemplateView
 
 # Create your views here.
@@ -163,5 +163,63 @@ def delete_categories_view(request, pk):
     context = {
         'title': title,
         'nombre_cat': queryset.nombre
+    }
+    return render(request, template_name, context)
+
+
+def item_detail_view(request, pk):
+    template_name = 'item_detail.html'
+    title = 'Detalle de Producto - '+Stock.objects.get(id=pk).nombre_producto
+    queryset = Stock.objects.get(id=pk)
+
+    context = {
+        'title': title,
+        'queryset' : queryset,
+    }
+    return render(request, template_name, context)
+
+
+def items_gastados_view (request, pk):
+    template_name = 'add_items.html'
+    title = 'Gastar Producto' + str(Stock.objects.get(id=pk).nombre_producto)
+    queryset = Stock.objects.get(id=pk)
+    form = GastadorForm(request.POST or None, instance=queryset)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.cantidad = instance.cantidad - instance.cantidad_gastada
+        #instance.gastado_por = str(request.user)
+        messages.success(request, ('Gastado exitosamente ' + str(instance.cantidad_gastada) + ' ' + str(instance.etiqueta) + ' del producto ' + str(instance.nombre_producto) + '. Restantes: ' + str(instance.cantidad) + ' ' + str(instance.etiqueta)))
+        instance.save()
+        return redirect('/detail_item/'+str(instance.id))
+        #return HttpResponse (instance.get_absolute_url())
+
+    context = {
+        'title': title,
+        'queryset' : queryset,
+        'form' : form,
+        'username' : 'Gastado por ' + str(request.user),
+    }
+    return render(request, template_name, context)
+
+
+def items_comprados_view (request, pk):
+    template_name = 'add_items.html'
+    title = 'Comprar Producto' + str(Stock.objects.get(id=pk).nombre_producto)
+    queryset = Stock.objects.get(id=pk)
+    form = CompradorForm(request.POST or None, instance=queryset)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.cantidad = instance.cantidad + instance.cantidad_comprada
+        instance.save()
+        #instance.comprado_por = str(request.user)
+        messages.success(request, ('Comprado exitosamente ' + str(instance.cantidad_comprada) + ' ' + str(instance.etiqueta) + ' del producto ' + str(instance.nombre_producto) + '. En stock: ' + str(instance.cantidad) + ' ' + str(instance.etiqueta)))
+        return redirect('/detail_item/'+str(instance.id))
+        #return HttpResponse (instance.get_absolute_url())
+
+    context = {
+        'title': title,
+        'queryset' : queryset, #instance
+        'form' : form,
+        'username' : 'Comprado por ' + str(request.user),
     }
     return render(request, template_name, context)

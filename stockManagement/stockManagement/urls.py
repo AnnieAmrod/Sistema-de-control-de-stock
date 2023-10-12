@@ -29,4 +29,7 @@ urlpatterns = [
     path('add_categories/', views.add_categories_view, name='add_categories'),
     path('update_categories/<str:pk>/', views.update_categories_view, name='update_categories'),
     path('delete_categories/<str:pk>/', views.delete_categories_view, name='delete_categories'),
+    path('item_detail/<str:pk>/', views.item_detail_view, name='item_detail'),
+    path('items_gastados/<str:pk>/', views.items_gastados_view, name='items_gastados'),
+    path('items_comprados/<str:pk>/', views.items_comprados_view, name='items_comprados'),
 ]
